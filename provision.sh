@@ -8,14 +8,18 @@ set -e
 
 export DEBIAN_FRONTEND=noninteractive
 
+whoami
+
 sudo -i
+
+whoami
 
 # DEFAULT USER SETTINGS
 # https://www.vagrantup.com/docs/boxes/base.html
 
-# "vagrant" User
+# "vagrant" User. No longer needed as newer ubuntu/xenial64 already have the vagrant user.
 
-useradd vagrant -m -p paX5EmO4EXy0I
+#useradd vagrant -m -p paX5EmO4EXy0I
 # Password: vagrant
 
 mkdir -p /home/vagrant/.ssh
@@ -46,7 +50,6 @@ apt-get update
 apt-get upgrade -y
 apt-get install -y git
 git --version
-# git version 2.10.2
 
 # ADDITIONAL SOFTWARE
 # https://www.vagrantup.com/docs/virtualbox/boxes.html
@@ -55,17 +58,17 @@ git --version
 # VirtualBox Guest Additions
 
 # Remove any existing virtualbox additions
-apt-get purge -y virtualbox*
-
-apt-get install -y build-essential linux-headers-$(uname -r)
-
-wget http://download.virtualbox.org/virtualbox/6.1.16/VBoxGuestAdditions_6.1.16.iso
-mkdir /media/VBoxGuestAdditions
-mount -o loop,ro VBoxGuestAdditions_6.1.16.iso /media/VBoxGuestAdditions
-sh /media/VBoxGuestAdditions/VBoxLinuxAdditions.run
-rm VBoxGuestAdditions_*.iso
-umount /media/VBoxGuestAdditions
-rmdir /media/VBoxGuestAdditions
+#apt-get purge -y virtualbox*
+#
+#apt-get install -y build-essential linux-headers-$(uname -r)
+#
+#wget http://download.virtualbox.org/virtualbox/6.1.16/VBoxGuestAdditions_6.1.16.iso
+#mkdir /media/VBoxGuestAdditions
+#mount -o loop,ro VBoxGuestAdditions_6.1.16.iso /media/VBoxGuestAdditions
+#sh /media/VBoxGuestAdditions/VBoxLinuxAdditions.run
+#rm VBoxGuestAdditions_*.iso || true
+#umount /media/VBoxGuestAdditions
+#rmdir /media/VBoxGuestAdditions
 
 # Remove ubuntu user
 #deluser --remove-home ubuntu
@@ -73,7 +76,6 @@ rmdir /media/VBoxGuestAdditions
 # Install puppet
 apt install -y puppet-common
 puppet --version
-# 3.8.5
 
 apt-get clean
 
