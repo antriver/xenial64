@@ -59,9 +59,9 @@ apt-get purge -y virtualbox*
 
 apt-get install -y build-essential linux-headers-$(uname -r)
 
-wget http://download.virtualbox.org/virtualbox/5.0.30/VBoxGuestAdditions_5.0.30.iso
+wget http://download.virtualbox.org/virtualbox/6.1.16/VBoxGuestAdditions_6.1.16.iso
 mkdir /media/VBoxGuestAdditions
-mount -o loop,ro VBoxGuestAdditions_5.0.30.iso /media/VBoxGuestAdditions
+mount -o loop,ro VBoxGuestAdditions_6.1.16.iso /media/VBoxGuestAdditions
 sh /media/VBoxGuestAdditions/VBoxLinuxAdditions.run
 rm VBoxGuestAdditions_*.iso
 umount /media/VBoxGuestAdditions
